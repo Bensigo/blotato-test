@@ -5,11 +5,11 @@ import { getModerationCacheStats } from '../../../lib/openai'
 import { getStorageHealth, performCleanup } from '../../../utils/cleanup'
 import type { ApiResponse } from '../../../lib/types'
 
-export async function GET(request: NextRequest) {
+export async function GET(request?: NextRequest) {
   try {
     // Check if cleanup is requested
-    const searchParams = request.nextUrl.searchParams
-    const shouldCleanup = searchParams.get('cleanup') === 'true'
+    const searchParams = request?.nextUrl?.searchParams
+    const shouldCleanup = searchParams?.get('cleanup') === 'true'
     
     let cleanupResults = null
     
